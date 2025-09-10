@@ -50,7 +50,7 @@ const HomePage = () => {
     formData.append('file', file);
 
     try {
-      const response = await axios.post('http://localhost:5000/upload', formData, {
+      const response = await axios.post("https://social-media-content-analyzer-w0ho.onrender.com", formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
 
