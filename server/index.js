@@ -16,7 +16,7 @@ const Post = require('./models/Post');
 // Middleware
 // Configure CORS to allow requests from the React development server
 app.use(cors({
-  origin: 'http://localhost:5173', // frontend origin
+  origin: 'http://localhost:5173' || 'https://social-media-content-analyzer-1-wj7t.onrender.com', // frontend origin
   methods: ['GET','POST','PUT','DELETE'],
 }));
 
