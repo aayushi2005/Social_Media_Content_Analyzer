@@ -50,7 +50,7 @@ const HomePage = () => {
     formData.append('file', file);
 
     try {
-      const response = await axios.post("https://social-media-content-analyzer-w0ho.onrender.com", formData, {
+      const response = await axios.post("https://social-media-content-analyzer-w0ho.onrender.com/api/upload", formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
 
@@ -80,7 +80,7 @@ const HomePage = () => {
     setAnalysisResults('');
 
     try {
-      const response = await axios.post('http://localhost:5000/analyze', {
+      const response = await axios.post('https://social-media-content-analyzer-w0ho.onrender.com/api/analyze', {
         text,
         imageBase64: imgData,
         mimeType: mime,

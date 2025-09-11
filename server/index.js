@@ -16,7 +16,10 @@ const Post = require('./models/Post');
 // Middleware
 // Configure CORS to allow requests from the React development server
 app.use(cors({
-  origin: 'http://localhost:5173' || 'https://social-media-content-analyzer-1-wj7t.onrender.com', // frontend origin
+  origin: [
+    'http://localhost:5173', // for local dev
+    'https://social-media-content-analyzer-w0ho.onrender.com' // frontend deployed URL
+  ],// frontend origin
   methods: ['GET','POST','PUT','DELETE'],
 }));
 
@@ -44,7 +47,7 @@ const uploadMiddleware = (req, res, next) => {
     });
 };
 
-app.post('/upload', uploadMiddleware, async (req, res) => {
+app.post('/api/upload', uploadMiddleware, async (req, res) => {
     console.log('Received upload request.');
     if (!req.file) {
         console.error('No file uploaded.');
@@ -98,7 +101,7 @@ app.post('/upload', uploadMiddleware, async (req, res) => {
 // app.post('/analyze', async (req, res) => {
 //   const { text, imageBase64, mimeType } = req.body;
 //   if (!text && !imageBase64) return res.status(400).json({ error: 'No text or image provided for analysis.' });
-app.post('/analyze', async (req, res) => {
+app.post('/api/analyze', async (req, res) => {
   let { text, imageBase64,mimeType } = req.body;
 
   if (!text || text.trim() === '') {
@@ -232,9 +235,7 @@ const systemPrompt = `You are an expert social media content analyst. Analyze th
 const authRoutes = require("./routes/auth");
 app.use("/api", authRoutes);
 
-
-
-
+// app.use("/api", require("./routes/api"));
 
 app.listen(port, () => {
     console.log(`Server is running at ${port}`);
