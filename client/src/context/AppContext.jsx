@@ -7,7 +7,8 @@ export const AppProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem("token") || null);
 
   const axiosInstance = axios.create({
-    baseURL: "http://localhost:5000/api", // your backend
+    // baseURL: "http://localhost:5000/api",
+    baseURL: "https://social-media-content-analyzer-backend-9dt7.onrender.com/api", // your backend
   });
 
   useEffect(() => {

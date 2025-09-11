@@ -50,7 +50,11 @@ const HomePage = () => {
     formData.append('file', file);
 
     try {
-      const response = await axios.post("http://localhost:5000/api/upload", formData, {
+      // const response = await axios.post("http://localhost:5000/api/upload", formData, {
+      //   headers: { 'Content-Type': 'multipart/form-data' },
+      // });
+
+      const response = await axios.post("https://social-media-content-analyzer-backend-9dt7.onrender.com/api/upload", formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
 
@@ -80,7 +84,8 @@ const HomePage = () => {
     setAnalysisResults('');
 
     try {
-      const response = await axios.post('http://localhost:5000/api/analyze', {
+      // const response = await axios.post('http://localhost:5000/api/analyze', 
+      const response = await axios.post('https://social-media-content-analyzer-backend-9dt7.onrender.com/api/analyze', {
         text,
         imageBase64: imgData,
         mimeType: mime,
